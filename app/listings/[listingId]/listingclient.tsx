@@ -12,6 +12,7 @@ import { eachDayOfInterval } from "date-fns";
 import { differenceInCalendarDays } from "date-fns/esm";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { Range } from "react-date-range";
 import toast from "react-hot-toast";
 
 const initialDateRange = {
@@ -50,7 +51,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
     const [isLoading, setIsLoading] = useState(false);
     const [totalPrice, setTotalPrice] = useState(listing.price);
-    const [dateRange, setDateRange] = useState(initialDateRange);
+    const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
     const onCreateReservation = useCallback(() => {
         if(!currentUser){
@@ -122,7 +123,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                             <ListingReservation
                                 price={listing.price}
                                 totalPrice={totalPrice}
-                                onChangeDate={(value) => setDateRange(value)}
+                                onChangeDate={(value) =>  setDateRange(value)}
                                 dateRange={dateRange}
                                 onSubmit={onCreateReservation}
                                 disabled={isLoading}
