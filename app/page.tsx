@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import getCurrentUser from "./actions/getcurrentuser";
 import getListings, { IListingsParams } from "./actions/getlistings";
 import ClientOnly from "./components/clientonly";
